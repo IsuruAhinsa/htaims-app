@@ -50,5 +50,17 @@
         @stack('modals')
 
         @livewireScripts
+
+        <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+        <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+
+        <script>
+            tippy('.sidebar-link', {
+                placement: 'right',
+                arrow: false,
+                theme: 'light',
+                content:(reference)=>reference.getAttribute('data-title'),
+            });
+        </script>
     </body>
 </html>
