@@ -1,5 +1,3 @@
-const colors = require('tailwindcss/colors');
-
 module.exports = {
     darkMode: 'class',
     mode: 'jit',
@@ -15,11 +13,6 @@ module.exports = {
             fontFamily: {
                 sans: ['Netflix Sans Regular'],
             },
-            colors: {
-                'coolGray' : colors.coolGray,
-                'trueGray' : colors.trueGray,
-                'dark' : '#242526',
-            }
         },
     },
 
