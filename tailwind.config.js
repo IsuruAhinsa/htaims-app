@@ -1,4 +1,4 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
+const colors = require('tailwindcss/colors');
 
 module.exports = {
     darkMode: 'class',
@@ -15,6 +15,11 @@ module.exports = {
             fontFamily: {
                 sans: ['Netflix Sans Regular'],
             },
+            colors: {
+                'coolGray' : colors.coolGray,
+                'trueGray' : colors.trueGray,
+                'dark' : '#242526',
+            }
         },
     },
 
