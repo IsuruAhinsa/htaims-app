@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('profile_photo_path', 2048)->nullable();
             $table->string('phone')->unique()->nullable();
             $table->timestamp('last_login')->nullable();
+            $table->ipAddress('last_login_ip')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
