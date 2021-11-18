@@ -167,7 +167,7 @@
 
         </div>
 
-        <x-sidebar-item :route="'#'" :dataTitle="'Settings'">
+        <x-sidebar-item :route="route('settings')" :dataTitle="'Settings'">
             <x-svg-icon stroke-width="2">
                 <circle cx="12" cy="12" r="3"></circle>
                 <path
