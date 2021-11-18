@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum'])->group(function () {
+
+    Route::view('/dashboard', 'dashboard')->name('dashboard');
+
+    Route::get('/settings', [SettingController::class, 'show'])
+        ->name('settings');
+
+});
