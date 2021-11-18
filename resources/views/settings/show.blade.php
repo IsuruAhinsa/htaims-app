@@ -1,6 +1,9 @@
 <x-app-layout>
 
-    <div class="flex flex-row h-screen" x-data="{showGeneralTab: true, showAppearanceTab: false, showLocalizationTab: false, showSecurityTab: false}">
+    <div
+        class="flex flex-row h-screen"
+        x-data="{showGeneralTab: true, showAppearanceTab: false, showLocalizationTab: false, showSecurityTab: false}"
+    >
 
         @include('partials.settings-sidebar')
 
