@@ -18,6 +18,7 @@ class CreateSettingsTable extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('site_name', 100)->default("Healthtronics Assets Information Management System");
             $table->string('logo')->nullable()->default(null);
+            $table->string('color')->default('light');
             $table->char('favicon')->nullable()->default(null);
             $table->string('login_bg_image')->nullable()->default('bg-image.jpg');
             $table->string('locale',5)->nullable()->default(config('app.locale'));
