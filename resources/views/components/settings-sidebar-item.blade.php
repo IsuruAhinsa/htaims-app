@@ -1,4 +1,4 @@
-<li class="flex py-6 px-6 border-b hover:cursor-pointer hover:bg-blue-50">
+<li {{ $attributes->merge(['class' => 'flex py-6 px-6 border-b hover:cursor-pointer hover:bg-blue-50']) }}>
 
     <div class="flex items-center">
         <x-svg-icon class="text-gray-500">
