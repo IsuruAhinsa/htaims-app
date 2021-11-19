@@ -25,7 +25,7 @@ class GeneralSettingsForm extends Component
 
         $this->validate();
 
-        if (!is_null($this->site_name)) {
+        if (is_null($this->site_name)) {
             $this->site_name = 'Healthtronics Assets Information Management System';
         }
 
