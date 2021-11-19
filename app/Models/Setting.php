@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use App\Traits\HasPhoto;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Setting extends Model
 {
     use HasFactory;
+    use HasPhoto;
 
     public static function timeFormats()
     {
@@ -44,7 +47,7 @@ class Setting extends Model
     public static function getSettings()
     {
         try {
-            return self::firstOrNew();
+            return Auth::user()->setting()->firstOrNew();
         } catch (\Throwable $throwable) {
             return null;
         }
