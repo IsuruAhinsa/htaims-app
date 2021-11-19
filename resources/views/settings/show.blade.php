@@ -2,7 +2,7 @@
 
     <div
         class="flex flex-row h-screen"
-        x-data="{showGeneralTab: true, showAppearanceTab: false, showLocalizationTab: false, showSecurityTab: false}"
+        x-data="{showGeneralTab: true, showAppearanceTab: false, showLocalizationTab: false}"
     >
 
         @include('partials.settings-sidebar')
@@ -15,10 +15,6 @@
 
             <div x-show="showAppearanceTab" style="display:none;">
                 <livewire:settings.appearance-settings-form/>
-            </div>
-
-            <div x-show="showSecurityTab" style="display:none;">
-                <livewire:settings.security-settings-form/>
             </div>
 
             <div x-show="showLocalizationTab" style="display:none;">
