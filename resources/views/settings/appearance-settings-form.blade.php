@@ -7,12 +7,12 @@
     <x-slot name="form">
 
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="name" value="{{ __('Choose your color scheme') }}" />
+            <x-jet-label for="color" value="{{ __('Choose your color scheme') }}" />
             <x-select wire:model.defer="color" class="mt-1 block w-full">
                 <option value="light">Light</option>
                 <option value="dark">Dark</option>
             </x-select>
-            <x-jet-input-error for="name" class="mt-2" />
+            <x-jet-input-error for="color" class="mt-2" />
         </div>
 
         <div x-data="{photoName: null, photoPreview: null}" class="col-span-6 sm:col-span-4">
