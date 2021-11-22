@@ -4,7 +4,7 @@
         <!-- Logo Section -->
         <div class="h-16 px-6 flex justify-center items-center w-full">
             <a href="{{ route('dashboard') }}">
-                <x-jet-application-mark class="block h-9 w-auto" />
+                <x-jet-application-mark class="block h-9 w-9" />
             </a>
         </div>
     </div>
