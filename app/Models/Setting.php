@@ -5,11 +5,21 @@ namespace App\Models;
 use App\Traits\HasPhoto;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Setting extends Model
 {
     use HasFactory;
     use HasPhoto;
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'login_background_url',
+    ];
 
     public static function timeFormats()
     {
@@ -50,5 +60,15 @@ class Setting extends Model
         } catch (\Throwable $throwable) {
             return null;
         }
+    }
+
+    public function getLoginBackgroundUrlAttribute()
+    {
+        return $this->loginBackground_path ?? $this->defaultLoginBackgroundPath();
+    }
+
+    protected function defaultLoginBackgroundPath(): string
+    {
+        return 'img/bg-image.jpg';
     }
 }
