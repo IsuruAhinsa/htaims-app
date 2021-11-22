@@ -14,7 +14,7 @@ class LocalizationsSettingsForm extends Component
 
     public function mount()
     {
-        $this->state = $this->setting->withoutRelations()->toArray();
+        $this->state = $this->setting->toArray();
     }
 
     public function updateLocalizationSettings()

@@ -5,7 +5,6 @@ namespace App\Models;
 use App\Traits\HasPhoto;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
 
 class Setting extends Model
 {
@@ -47,7 +46,7 @@ class Setting extends Model
     public static function getSettings()
     {
         try {
-            return Auth::user()->setting()->firstOrNew();
+            return self::firstOrNew();
         } catch (\Throwable $throwable) {
             return null;
         }
