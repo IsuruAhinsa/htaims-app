@@ -7,6 +7,11 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" href="{{ \App\Models\Setting::getSettings()->logo_path ??  asset(\App\Models\Setting::getSettings()->logo_path) }}">
+        <link rel="apple-touch-startup-image" href="{{ \App\Models\Setting::getSettings()->logo_path ??  asset(\App\Models\Setting::getSettings()->logo_path) }}">
+        <link rel="shortcut icon" type="image/ico" sizes="32" href="{{ \App\Models\Setting::getSettings()->favicon_path ?  asset(\App\Models\Setting::getSettings()->favicon_path) : asset('favicon.ico') }} ">
+
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
@@ -25,7 +30,7 @@
                 height: 100%;
                 z-index: 1;
                 opacity: 0.5;
-                background-image: url({{ asset('img/bg-image.jpg') }});
+                background-image: url({{ \App\Models\Setting::getSettings()->loginBackground_path ? asset(\App\Models\Setting::getSettings()->loginBackground_path) : asset('img/bg-image.jpg') }});
                 background-repeat: no-repeat;
                 background-position: center;
                 background-size: cover;

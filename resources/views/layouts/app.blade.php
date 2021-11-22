@@ -7,6 +7,11 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" href="{{ \App\Models\Setting::getSettings()->logo_path ??  asset(\App\Models\Setting::getSettings()->logo_path) }}">
+        <link rel="apple-touch-startup-image" href="{{ \App\Models\Setting::getSettings()->logo_path ??  asset(\App\Models\Setting::getSettings()->logo_path) }}">
+        <link rel="shortcut icon" type="image/ico" sizes="32" href="{{ \App\Models\Setting::getSettings()->favicon_path ?  asset(\App\Models\Setting::getSettings()->favicon_path) : asset('favicon.ico') }} ">
+
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
@@ -29,7 +34,7 @@
 
         <div class="flex min-h-full bg-gray-100 dark:bg-dark">
 
-            @include('partials.sidebar')
+            @livewire('partials.sidebar')
 
             <div class="flex-1">
 
