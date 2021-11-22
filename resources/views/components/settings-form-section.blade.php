@@ -1,6 +1,6 @@
 @props(['submit'])
 
-<div class="grid grid-cols-1 lg:px-10 xl:px-20 2xl:px-60">
+<div class="grid grid-cols-1 px-5 md:px-3 md:my-5">
 
     <x-settings-form-section-title>
         <x-slot name="title">{{ $title }}</x-slot>
