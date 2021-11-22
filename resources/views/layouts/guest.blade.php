@@ -13,12 +13,34 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
+        <style>
+
+            .bg-image::before {
+                content: ' ';
+                display: block;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                opacity: 0.5;
+                background-image: url({{ asset('img/bg-image.jpg') }});
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+            }
+
+        </style>
+
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
     <body>
-        <div class="font-sans text-gray-900 antialiased">
-            {{ $slot }}
+        <div class="bg-image">
+            <div class="font-sans text-gray-900 antialiased relative z-20">
+                {{ $slot }}
+            </div>
         </div>
     </body>
 </html>

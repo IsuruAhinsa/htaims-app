@@ -7,44 +7,59 @@
     <x-slot name="form">
 
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="date_format" value="{{ __('Date Format') }}" />
-            <x-select wire:model.defer="state.date_format" class="mt-1 block w-full">
+
+            <x-select
+                :searchable="false"
+                label="Date Format"
+                placeholder="Set Date Format"
+                wire:model.defer="state.date_format"
+            >
                 @foreach(\App\Models\Setting::dateformats() as $format)
-                    <option value="{{ $format }}">
-                        {{ \Carbon\Carbon::parse(date('Y').'-'.date('m').'-'.date('d'))->format($format) }}
-                    </option>
+                    <x-select.option label="{{ \Carbon\Carbon::parse(date('Y').'-'.date('m').'-'.date('d'))->format($format) }}" value="{{ $format }}" />
                 @endforeach
+
             </x-select>
+
             <x-jet-input-error for="date_format" class="mt-2" />
+
         </div>
 
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="time_format" value="{{ __('Time Format') }}" />
-            <x-select wire:model.defer="state.time_format" class="mt-1 block w-full">
+
+            <x-select
+                :searchable="false"
+                label="Time Format"
+                placeholder="Set Time Format"
+                wire:model.defer="state.time_format"
+            >
                 @foreach(\App\Models\Setting::timeFormats() as $format)
-                    <option value="{{ $format }}">
-                        {{ \Carbon\Carbon::now()->format($format) }}
-                    </option>
+                    <x-select.option label="{{ \Carbon\Carbon::now()->format($format) }}" value="{{ $format }}" />
                 @endforeach
+
             </x-select>
+
             <x-jet-input-error for="time_format" class="mt-2" />
+
         </div>
 
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="timezone" value="{{ __('Timezone') }}" />
-            <x-select wire:model.defer="state.timezone" class="mt-1 block w-full">
+
+            <x-select
+                label="Timezone"
+                placeholder="Select Timezone"
+                wire:model.defer="state.timezone"
+            >
                 @foreach(\App\Models\Setting::timezones() as $timezone)
-                    <option
-                        value="{{ $timezone }}"
-                    >
-                        {{ $timezone }}
-                    </option>
+                    <x-select.option label="{{ $timezone }}" value="{{ $timezone }}" />
                 @endforeach
             </x-select>
+
             <x-input-help-text>
                 The Current Date & Time: {{ date('F l d, Y - g:i:s A') }}
             </x-input-help-text>
+
             <x-jet-input-error for="timezone" class="mt-2" />
+
         </div>
 
         <div class="col-span-6 sm:col-span-4">
@@ -61,7 +76,7 @@
             {{ __('Save') }}
         </x-jet-button>
 
-        <x-jet-action-message class="mr-3" on="saved">
+        <x-jet-action-message class="ml-3" on="saved">
             {{ __('Saved.') }}
         </x-jet-action-message>
 

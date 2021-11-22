@@ -4,6 +4,10 @@
             <x-jet-authentication-card-logo />
         </x-slot>
 
+        <x-slot name="name">
+            {{ __('HTAIMS') }}
+        </x-slot>
+
         <x-jet-validation-errors class="mb-4" />
 
         @if (session('status'))
