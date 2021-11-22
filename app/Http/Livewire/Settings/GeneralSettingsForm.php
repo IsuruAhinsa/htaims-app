@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\Settings;
 
 use App\Models\Setting;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class GeneralSettingsForm extends Component
@@ -12,7 +11,7 @@ class GeneralSettingsForm extends Component
 
     public function mount()
     {
-        $this->site_name = Setting::getSettings()->site_name;
+        $this->site_name = $this->setting->site_name;
     }
 
     protected $rules = [
@@ -29,12 +28,15 @@ class GeneralSettingsForm extends Component
             $this->site_name = 'Healthtronics Assets Information Management System';
         }
 
-        $setting = Setting::getSettings();
-        $setting->user_id = Auth::id();
-        $setting->site_name = $this->site_name;
-        $setting->save();
+        $this->setting->site_name = $this->site_name;
+        $this->setting->save();
 
         $this->emit('saved');
+    }
+
+    public function getSettingProperty()
+    {
+        return Setting::getSettings();
     }
 
     public function render()

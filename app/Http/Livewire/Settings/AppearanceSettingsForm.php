@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\Settings;
 
 use App\Models\Setting;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -25,8 +24,8 @@ class AppearanceSettingsForm extends Component
     }
 
     protected $rules = [
-        'loginBackground' => 'nullable|mimes:png,gif,jpg,jpeg,svg,bmp,svg+xml|max:10',
-        'logo' => 'nullable|mimes:png,gif,jpg,jpeg,svg,bmp,svg+xml|max:10',
+        'loginBackground' => 'nullable|mimes:png,gif,jpg,jpeg,svg,bmp,svg+xml|max:10240',
+        'logo' => 'nullable|mimes:png,gif,jpg,jpeg,svg,bmp,svg+xml|max:10240',
         'favicon' => 'nullable|mimes:png,gif,jpg,jpeg,svg,bmp,svg+xml',
     ];
 
@@ -35,10 +34,6 @@ class AppearanceSettingsForm extends Component
         $this->resetErrorBag();
 
         $this->validate();
-
-        $this->setting->user_id = Auth::id();
-        $this->setting->color = $this->color;
-        $this->setting->save();
 
         if (isset($this->loginBackground)) {
             $this->setting->updatePhoto($this->loginBackground, 'loginBackground_path', 'img/settings/backgrounds');
@@ -52,7 +47,12 @@ class AppearanceSettingsForm extends Component
             $this->setting->updatePhoto($this->favicon, 'favicon_path', 'img/settings/favicons');
         }
 
+        $this->setting->color = $this->color ?? 'light';
+        $this->setting->save();
+
         $this->emit('saved');
+
+        $this->emit('refreshSidebar');
     }
 
     public function deleteLoginBackground()
@@ -63,6 +63,8 @@ class AppearanceSettingsForm extends Component
     public function deleteLogo()
     {
         $this->setting->deletePhoto('logo_path');
+
+        $this->emit('refreshSidebar');
     }
 
     public function deleteFavicon()

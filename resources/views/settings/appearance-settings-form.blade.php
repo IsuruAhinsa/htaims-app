@@ -39,9 +39,7 @@
 
             <!-- Current Login Background -->
             <div class="mt-2" x-show="!photoPreview">
-                @isset($this->setting->loginBackground_path)
-                    <img src="{{ asset($this->setting->loginBackground_path) }}" alt="{{ $this->setting->loginBackground_path }}" class="block w-auto h-20 object-contain">
-                @endisset
+                <img src="{{ asset($this->setting->login_background_url) }}" alt="{{ $this->setting->login_background_url }}" class="block w-auto h-20 object-contain">
             </div>
 
             <!-- New Login Background Preview -->
