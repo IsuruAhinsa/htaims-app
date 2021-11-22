@@ -5,7 +5,7 @@
         </x-slot>
 
         <x-slot name="name">
-            {{ __('HTAIMS') }}
+            {{ \App\Models\Setting::getSettings()->site_name ?? config('app.name') }}
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />

@@ -3,7 +3,7 @@
         {{ $logo }}
     </div>
 
-    <div class="text-3xl font-medium my-3">
+    <div class="sm:w-2/5 text-3xl text-center font-medium my-3">
         {{ $name }}
     </div>
 

@@ -4,6 +4,10 @@
             <x-jet-authentication-card-logo />
         </x-slot>
 
+        <x-slot name="name">
+            {{ \App\Models\Setting::getSettings()->site_name ?? config('app.name') }}
+        </x-slot>
+
         <x-jet-validation-errors class="mb-4" />
 
         <form method="POST" action="{{ route('register') }}">
