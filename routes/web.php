@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,5 +25,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::get('/settings', [SettingController::class, 'show'])
         ->name('settings');
+
+    Route::resource('locations', LocationController::class);
 
 });
