@@ -32,6 +32,9 @@
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased">
+
+        <x-notifications z-index="z-50" />
+
         <x-jet-banner />
 
         <div class="flex min-h-full bg-gray-100 dark:bg-dark">
