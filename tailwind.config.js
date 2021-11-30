@@ -20,6 +20,12 @@ module.exports = {
 
     theme: {
         extend: {
+            colors: {
+                'dark-primary': '#18191A',
+                'dark-secondary': '#242526',
+                'dark-third': '#3A3B3C',
+                'dark-typography': '#B8BBBF'
+            },
             fontFamily: {
                 sans: ['Netflix Sans Regular'],
             },
