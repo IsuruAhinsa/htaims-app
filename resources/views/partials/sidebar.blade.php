@@ -1,4 +1,4 @@
-<aside class="flex flex-col items-center bg-white shadow">
+<aside class="flex flex-col items-center bg-white dark:bg-black shadow">
 
     <div class="h-16 flex items-center w-full">
         <!-- Logo Section -->
@@ -115,19 +115,19 @@
 
         <div class="bg-green-100 rounded-3xl my-1">
 
-            <x-sidebar-item :route="'#'" :dataTitle="'Material Requisitions'" class="hover:bg-transparent">
+            <x-sidebar-item :route="'#'" :dataTitle="'Material Requisitions'" class="hover:bg-transparent dark:text-black dark:hover:bg-green-100 rounded-3xl">
                 <x-svg-icon>
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 15v-1a4 4 0 00-4-4H8m0 0l3 3m-3-3l3-3m9 14V5a2 2 0 00-2-2H6a2 2 0 00-2 2v16l4-2 4 2 4-2 4 2z" />
                 </x-svg-icon>
             </x-sidebar-item>
 
-            <x-sidebar-item :route="'#'" :dataTitle="'Purchase Requisitions'" class="hover:bg-transparent">
+            <x-sidebar-item :route="'#'" :dataTitle="'Purchase Requisitions'" class="hover:bg-transparent dark:text-black dark:hover:bg-green-100 rounded-3xl">
                 <x-svg-icon>
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                 </x-svg-icon>
             </x-sidebar-item>
 
-            <x-sidebar-item :route="'#'" :dataTitle="'Purchase Orders'" class="hover:bg-transparent">
+            <x-sidebar-item :route="'#'" :dataTitle="'Purchase Orders'" class="hover:bg-transparent dark:text-black dark:hover:bg-green-100 rounded-3xl">
                 <x-svg-icon>
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                 </x-svg-icon>
@@ -137,13 +137,13 @@
 
         <div class="bg-yellow-100 rounded-3xl my-1">
 
-            <x-sidebar-item :route="'#'" :dataTitle="'Items'" class="hover:bg-transparent">
+            <x-sidebar-item :route="'#'" :dataTitle="'Items'" class="hover:bg-transparent dark:text-black dark:hover:bg-yellow-100 rounded-3xl">
                 <x-svg-icon stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
                 </x-svg-icon>
             </x-sidebar-item>
 
-            <x-sidebar-item :route="'#'" :dataTitle="'Bucket'" class="hover:bg-transparent">
+            <x-sidebar-item :route="'#'" :dataTitle="'Bucket'" class="hover:bg-transparent dark:text-black dark:hover:bg-yellow-100 rounded-3xl">
                 <x-svg-icon stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
                 </x-svg-icon>
@@ -153,13 +153,13 @@
 
         <div class="bg-purple-100 rounded-3xl my-1">
 
-            <x-sidebar-item :route="'#'" :dataTitle="'Users'" class="hover:bg-transparent">
+            <x-sidebar-item :route="'#'" :dataTitle="'Users'" class="hover:bg-transparent dark:text-black dark:hover:bg-purple-100 rounded-3xl">
                 <x-svg-icon>
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                 </x-svg-icon>
             </x-sidebar-item>
 
-            <x-sidebar-item :route="'#'" :dataTitle="'Subscription'" class="hover:bg-transparent">
+            <x-sidebar-item :route="'#'" :dataTitle="'Subscription'" class="hover:bg-transparent dark:text-black dark:hover:bg-purple-100 rounded-3xl">
                 <x-svg-icon>
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
                 </x-svg-icon>
