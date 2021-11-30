@@ -19,7 +19,7 @@
 
         <x-dynamic-component
             :component="WireUiComponent::resolve('input')"
-            class="cursor-pointer overflow-hidden dark:text-secondary-400 border border-gray-300 focus:border-indigo-200 focus:ring focus:ring-indigo-100 focus:ring-opacity-90 rounded-md shadow-sm"
+            class="cursor-pointer overflow-hidden dark:text-secondary-400 border border-gray-300 dark:border-transparent focus:border-indigo-200 dark:focus:border-indigo-500 focus:ring dark:focus:ring-0 focus:ring-indigo-100 focus:ring-opacity-90 rounded-md shadow-sm dark:bg-dark-third"
             x-ref="select"
             x-on:click="togglePopover"
             x-on:keydown.arrow-down.prevent="$event.shiftKey || getNextFocusable().focus()"

@@ -2,7 +2,7 @@
 
     <x-settings-menu-item
         @click.prevent="showGeneralTab = true; showAppearanceTab = false; showLocalizationTab = false;"
-        x-bind:class="showGeneralTab && 'border-l-2 border-blue-700 text-blue-600 bg-blue-50'"
+        x-bind:class="showGeneralTab && 'border-l-2 border-blue-700 text-blue-600 dark:text-dark-typography bg-blue-50 dark:bg-dark-third'"
     >
 
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -17,7 +17,7 @@
 
     <x-settings-menu-item
         @click.prevent="showGeneralTab = false; showAppearanceTab = true; showLocalizationTab = false;"
-        x-bind:class="showAppearanceTab && 'border-l-2 border-blue-700 text-blue-600 bg-blue-50'"
+        x-bind:class="showAppearanceTab && 'border-l-2 border-blue-700 text-blue-600 dark:text-dark-typography bg-blue-50 dark:bg-dark-third'"
     >
 
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -30,7 +30,7 @@
 
     <x-settings-menu-item
         @click.prevent="showGeneralTab = false; showAppearanceTab = false; showLocalizationTab = true;"
-        x-bind:class="showLocalizationTab && 'border-l-2 border-blue-700 text-blue-600 bg-blue-50'"
+        x-bind:class="showLocalizationTab && 'border-l-2 border-blue-700 text-blue-600 dark:text-dark-typography bg-blue-50 dark:bg-dark-third'"
     >
 
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
