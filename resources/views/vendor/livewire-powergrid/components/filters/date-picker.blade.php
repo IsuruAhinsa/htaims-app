@@ -26,7 +26,7 @@
                data-field="{{ data_get($date, 'dataField') }}"
                style="{{ data_get($column, 'headerStyle') }}"
                data-key="enabledFilters.date_picker.{{ data_get($date, 'dataField') }}"
-               class="power_grid range_input_{{ data_get($date, 'dataField') }} {{ $theme->inputClass }} {{ data_get($column, 'headerClass') }} border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+               class="power_grid range_input_{{ data_get($date, 'dataField') }} {{ $theme->inputClass }} {{ data_get($column, 'headerClass') }} form-input border-gray-300 focus:border-indigo-300 dark:focus:border-indigo-500 focus:ring dark:focus:ring-0 focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm dark:bg-dark-third dark:text-dark-typography dark:border-transparent"
                type="text"
                placeholder="{{ trans('livewire-powergrid::datatable.placeholders.select') }}"
                wire:model="filters.input_date_picker.{{ data_get($date, 'dataField') }}"

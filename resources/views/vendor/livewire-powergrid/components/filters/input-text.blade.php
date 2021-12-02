@@ -14,7 +14,7 @@
                 <div class="@if(!$inline) pl-0 pt-1 pr-3 @endif">
                     <div class="relative">
                         <select id="input_text_options"
-                                class="power_grid {{ $theme->selectClass }} {{ data_get($column, 'headerClass') }} bg-white border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                                class="power_grid {{ $theme->selectClass }} {{ data_get($column, 'headerClass') }} bg-white border-gray-300 dark:border-transparent focus:border-indigo-300 dark:focus:border-indigo-500 focus:ring dark:focus:ring-0 focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm dark:bg-dark-third"
                                 style="{{ data_get($column, 'headerStyle') }}"
                                 wire:model.debounce.800ms="filters.input_option_text.{{ data_get($inputText, 'field')  }}"
                                 wire:input.debounce.300ms="filterInputTextOptions('{{ data_get($inputText, 'field') }}', $event.target.value, '{{ data_get($inputText, 'label') }}')">
@@ -36,7 +36,7 @@
                             wire:model.debounce.800ms="filters.input_text.{{ data_get($inputText, 'field')  }}"
                             wire:input.debounce.800ms="filterInputText('{{ data_get($inputText, 'field') }}', $event.target.value, '{{ data_get($inputText, 'label') }}')"
                             type="text"
-                            class="power_grid {{ $theme->inputClass }} form-input border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                            class="power_grid {{ $theme->inputClass }} form-input border-gray-300 focus:border-indigo-300 dark:focus:border-indigo-500 focus:ring dark:focus:ring-0 focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm dark:bg-dark-third dark:text-dark-typography dark:border-transparent"
                             placeholder="{{ empty($column)?data_get($inputText, 'label'):($column->placeholder?:$column->title) }}">
                 </div>
             </div>

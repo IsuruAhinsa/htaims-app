@@ -18,7 +18,7 @@
                         wire:input.debounce.800ms="filterNumberStart('{{ data_get($number, 'dataField') }}', $event.target.value,'{{ addslashes(data_get($number, 'thousands')) }}','{{ addslashes(data_get($number, 'decimal')) }}','{{ data_get($number, 'label') }}')"
                         @if($inline) style="min-width: 100px; max-width: 130px !important; {{ data_get($column, 'headerStyle') }}" @endif
                         type="text"
-                        class="power_grid {{ $theme->inputClass }} {{ data_get($column, 'headerClass') }} form-input border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                        class="power_grid {{ $theme->inputClass }} {{ data_get($column, 'headerClass') }} form-input border-gray-300 dark:border-transparent focus:border-indigo-300 dark:focus:border-indigo-500 focus:ring dark:focus:ring-0 focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm dark:bg-dark-third dark:text-dark-typography"
                         placeholder="Min">
                 </div>
                 <div class="mt-1">
@@ -28,7 +28,7 @@
                         wire:input.debounce.800ms="filterNumberEnd('{{ data_get($number, 'dataField') }}',$event.target.value,'{{ addslashes(data_get($number, 'thousands')) }}','{{ addslashes(data_get($number, 'decimal')) }}', '{{ data_get($number, 'label') }}')"
                         @if($inline) style="min-width: 100px; max-width: 130px !important; {{ data_get($column, 'headerStyle') }}" @endif
                         type="text"
-                        class="power_grid {{ $theme->inputClass }} {{ data_get($column, 'headerClass') }} form-input border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                        class="power_grid {{ $theme->inputClass }} {{ data_get($column, 'headerClass') }} form-input border-gray-300 dark:border-transparent focus:border-indigo-300 dark:focus:border-indigo-500 focus:ring dark:focus:ring-0 focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm dark:bg-dark-third dark:text-dark-typography"
                         placeholder="Max">
                 </div>
             </div>

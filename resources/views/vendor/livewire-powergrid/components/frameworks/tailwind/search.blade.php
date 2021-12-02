@@ -9,7 +9,7 @@
               </span>
             <input wire:model.debounce.600ms="search" type="text"
                    style="padding-left: 36px !important;"
-                   class="block w-full float-right bg-white-200 text-gray-700 border py-2 px-3 leading-tight focus:outline-none focus:bg-white pl-10 dark:bg-gray-500 dark:text-gray-200 dark:placeholder-gray-200 dark:border-gray-500 form-input border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                   class="block w-full float-right bg-white-200 dark:bg-dark-third text-gray-700 dark:text-dark-typography border py-2 px-3 leading-tight focus:outline-none focus:bg-white pl-10 dark:placeholder-dark-typography form-input border-gray-300 dark:border-transparent focus:border-indigo-300 dark:focus:border-indigo-500 focus:ring dark:focus:ring-0 focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
                    placeholder="{{ trans('livewire-powergrid::datatable.placeholders.search') }}">
         </div>
 
