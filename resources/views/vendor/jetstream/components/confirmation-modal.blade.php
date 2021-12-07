@@ -14,7 +14,7 @@
                     {{ $title }}
                 </h3>
 
-                <div class="mt-2">
+                <div class="mt-2 text-gray-500">
                     {{ $content }}
                 </div>
             </div>
