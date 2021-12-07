@@ -82,13 +82,13 @@
                     </button>
                 </div>
 
-                <div class="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
+                <div class="h-full flex flex-col py-6 bg-white dark:bg-dark-secondary shadow-xl overflow-y-scroll">
                     <div class="px-4 sm:px-6">
-                        <h2 class="flex items-center text-lg font-medium text-gray-900" id="slide-over-title">
+                        <h2 class="flex items-center text-lg font-medium text-gray-900 dark:text-white" id="slide-over-title">
                             {{ $title }}
                         </h2>
                     </div>
-                    <div class="mt-6 relative flex-1 px-4 sm:px-6">
+                    <div class="mt-6 relative flex-1 px-4 sm:px-6 dark:text-white">
                         <div class="absolute inset-0 px-4 sm:px-6">
                             {{ $content }}
                         </div>
