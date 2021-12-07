@@ -8,7 +8,7 @@
     @foreach($columns as $column)
         @if($column->hidden === false)
             <td class="{{ $theme->table->tdBodyClass . ' '.$column->bodyClass ?? '' }} text-sm"
-                style=" {{ $theme->table->tdBodyStyle . ' '.$column->bodyStyle ?? '' }}"
+                style=" {{ $theme->table->tdBodyStyle . ' '.$column->bodyStyle ?? '' }} white-space: normal"
             >
                 @if($column->editable === true)
                     <span class="{{ $theme->editable->spanClass }}">
