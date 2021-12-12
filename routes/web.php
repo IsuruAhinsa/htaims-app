@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\LocationController;
 use App\Http\Controllers\SettingController;
+use App\Http\Livewire\Locations\LocationIndex;
+use App\Http\Livewire\Locations\LocationTrash;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,9 +24,15 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::view('/dashboard', 'dashboard')->name('dashboard');
 
+    // NOTE: change to invokable method & route
     Route::get('/settings', [SettingController::class, 'show'])
         ->name('settings');
 
-    Route::resource('locations', LocationController::class);
+    // Livewire Routes
+    Route::get('locations', LocationIndex::class)
+        ->name('locations.index');
+
+    Route::get('locations/trash', LocationTrash::class)
+        ->name('locations.trash');
 
 });
