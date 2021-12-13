@@ -15,7 +15,7 @@
 <div class="w-full md:w-auto">
     @if(isset($actions) && count($actions) && $row !== '')
 
-        <td class="pg-actions {{ $theme->table->tdBodyClass }}">
+        <td class="pg-actions {{ $theme->table->tdBodyClass }} text-center">
 
             <div class="inline-flex" role="group" aria-label="Button group">
 
