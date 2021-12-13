@@ -15,7 +15,6 @@
                     <div class="relative">
                         <select id="input_text_options"
                                 class="power_grid {{ $theme->selectClass }} {{ data_get($column, 'headerClass') }} bg-white border-gray-300 dark:border-transparent focus:border-indigo-300 dark:focus:border-indigo-500 focus:ring dark:focus:ring-0 focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm dark:bg-dark-third"
-                                style="{{ data_get($column, 'headerStyle') }}"
                                 wire:model.debounce.800ms="filters.input_option_text.{{ data_get($inputText, 'field')  }}"
                                 wire:input.debounce.300ms="filterInputTextOptions('{{ data_get($inputText, 'field') }}', $event.target.value, '{{ data_get($inputText, 'label') }}')">
                             <option value="contains">{{ trans('livewire-powergrid::datatable.input_text_options.contains') }}</option>

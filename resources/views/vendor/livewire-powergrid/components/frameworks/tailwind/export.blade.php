@@ -1,7 +1,7 @@
 <div x-data="{ open: false }"
      @click.away="open = false">
     <button @click.prevent="open = ! open"
-            class="block bg-white-200 text-gray-700 border border-gray-300 rounded py-1.5 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-600 dark:border-transparent dark:bg-dark-third 2xl:dark:placeholder-gray-300 dark:text-dark-typography">
+            class="block bg-white-200 hover:bg-gray-50 text-gray-700 border border-gray-300 rounded py-1.5 px-3 leading-tight focus:outline-none focus:bg-white dark:border-transparent dark:bg-dark-third 2xl:dark:placeholder-gray-300 dark:text-dark-typography">
         <div class="flex">
             <x-livewire-powergrid::icons.download class="h-6 w-6 text-gray-500 dark:text-gray-300"/>
         </div>
