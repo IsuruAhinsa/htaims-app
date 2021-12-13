@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Locations;
 
 use App\Models\Location;
 use Illuminate\Database\Eloquent\Builder;
-use PowerComponents\LivewirePowerGrid\Button;
 use PowerComponents\LivewirePowerGrid\Column;
 use PowerComponents\LivewirePowerGrid\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridEloquent;
@@ -42,7 +41,7 @@ class LocationTable extends PowerGridComponent
     */
     public function datasource(): ?Builder
     {
-        return  Location::query();
+        return Location::query();
     }
 
     /*
@@ -68,7 +67,6 @@ class LocationTable extends PowerGridComponent
     public function addColumns(): ?PowerGridEloquent
     {
         return PowerGrid::eloquent()
-            ->addColumn('id')
             ->addColumn('code')
             ->addColumn('description')
             ->addColumn('created_at_formatted', function(Location $model) {
@@ -91,12 +89,6 @@ class LocationTable extends PowerGridComponent
     {
         return [
             Column::add()
-                ->title(__('ID'))
-                ->field('id')
-                ->makeInputRange()
-                ->hidden(),
-
-            Column::add()
                 ->title(__('CODE'))
                 ->field('code')
                 ->sortable()
@@ -108,7 +100,8 @@ class LocationTable extends PowerGridComponent
                 ->field('description')
                 ->sortable()
                 ->headerAttribute(false, 'width:50%')
-                ->searchable(),
+                ->searchable()
+                ->makeInputText(),
 
             Column::add()
                 ->title(__('CREATED AT'))
@@ -124,13 +117,7 @@ class LocationTable extends PowerGridComponent
                 ->sortable()
                 ->makeInputDatePicker('updated_at')
                 ->hidden(),
-
         ];
-    }
-
-    public function template(): ?string
-    {
-        return null;
     }
 
 }

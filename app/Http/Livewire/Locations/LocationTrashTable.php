@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\Locations;
 
 use App\Models\Location;
-use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\Button;
 use PowerComponents\LivewirePowerGrid\Column;
@@ -27,8 +26,7 @@ class LocationTrashTable extends PowerGridComponent
     */
     public function setUp()
     {
-        $this->showCheckBox()
-            ->showRecordCount('full')
+        $this->showRecordCount('full')
             ->showToggleColumns()
             ->showPerPage()
             ->showSearchInput();
@@ -69,14 +67,16 @@ class LocationTrashTable extends PowerGridComponent
     public function addColumns(): ?PowerGridEloquent
     {
         return PowerGrid::eloquent()
-            ->addColumn('id')
             ->addColumn('code')
             ->addColumn('description')
             ->addColumn('created_at_formatted', function(Location $model) {
-                return Carbon::parse($model->created_at)->format('d/m/Y H:i:s');
+                return $model->getFormattedDateObject($model->created_at, 'datetime', false);
             })
             ->addColumn('updated_at_formatted', function(Location $model) {
-                return Carbon::parse($model->updated_at)->format('d/m/Y H:i:s');
+                return $model->getFormattedDateObject($model->updated_at, 'datetime', false);
+            })
+            ->addColumn('deleted_at_formatted', function (Location $model) {
+                return $model->getFormattedDateObject($model->deleted_at, 'datetime', false);
             });
     }
 
@@ -92,12 +92,6 @@ class LocationTrashTable extends PowerGridComponent
     {
         return [
             Column::add()
-                ->title(__('ID'))
-                ->field('id')
-                ->makeInputRange()
-                ->hidden(),
-
-            Column::add()
                 ->title(__('CODE'))
                 ->field('code')
                 ->sortable()
@@ -107,8 +101,10 @@ class LocationTrashTable extends PowerGridComponent
             Column::add()
                 ->title(__('DESCRIPTION'))
                 ->field('description')
+                ->headerAttribute(false, 'width:50%')
                 ->sortable()
-                ->searchable(),
+                ->searchable()
+                ->makeInputText(),
 
             Column::add()
                 ->title(__('CREATED AT'))
@@ -125,6 +121,13 @@ class LocationTrashTable extends PowerGridComponent
                 ->sortable()
                 ->makeInputDatePicker('updated_at')
                 ->hidden(),
+
+            Column::add()
+                ->title(__('DELETED AT'))
+                ->field('deleted_at_formatted')
+                ->searchable()
+                ->sortable()
+                ->makeInputDatePicker('deleted_at'),
         ]
 ;
     }
@@ -155,50 +158,6 @@ class LocationTrashTable extends PowerGridComponent
                ->caption(__($deleteSVGCaption))
                ->emit('confirmForceDeletion', ['key' => 'id']),
         ];
-    }
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | Edit Method
-    |--------------------------------------------------------------------------
-    | Enable this section to use editOnClick() or toggleable() methods
-    |
-    */
-
-    /*
-    public function update(array $data ): bool
-    {
-       try {
-           $updated = Location::query()->find($data['id'])->update([
-                $data['field'] => $data['value']
-           ]);
-       } catch (QueryException $exception) {
-           $updated = false;
-       }
-       return $updated;
-    }
-
-    public function updateMessages(string $status, string $field = '_default_message'): string
-    {
-        $updateMessages = [
-            'success'   => [
-                '_default_message' => __('Data has been updated successfully!'),
-                //'custom_field' => __('Custom Field updated successfully!'),
-            ],
-            'error' => [
-                '_default_message' => __('Error updating the data.'),
-                //'custom_field' => __('Error updating custom field.'),
-            ]
-        ];
-
-        return ($updateMessages[$status][$field] ?? $updateMessages[$status]['_default_message']);
-    }
-    */
-
-    public function template(): ?string
-    {
-        return null;
     }
 
 }
