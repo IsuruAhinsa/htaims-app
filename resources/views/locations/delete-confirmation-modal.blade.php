@@ -5,7 +5,7 @@
     </x-slot>
 
     <x-slot name="content">
-        Are you sure you want to delete this location? By checking following permanently delete checkbox, this location record permanently deleted and all of its related resources and data will be permanently deleted.
+        Would you like to delete this location record? By checking following permanently delete checkbox, this location record, all of its related resources and data will be permanently deleted. It cannot be undone.
 
         <label class="inline-flex items-center py-3 cursor-pointer">
             <x-jet-checkbox wire:model="forceDelete" class="text-red-600 focus:border-red-300 focus:ring-red-200"/>

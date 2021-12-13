@@ -5,7 +5,7 @@
     </x-slot>
 
     <x-slot name="content">
-        Are you sure you want to delete this location permanently?
+        This location will be permanently deleted from the database. This cannot be undone.
     </x-slot>
 
     <x-slot name="footer">

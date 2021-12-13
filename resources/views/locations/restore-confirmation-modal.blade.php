@@ -1,12 +1,11 @@
 <x-restore-confirmation-modal wire:model.defer="confirmingRestore">
 
     <x-slot name="title">
-        Restore Deleted Location?
+        Restore Deleted Location
     </x-slot>
 
     <x-slot name="content">
-        Are you sure you want to delete this location? By checking following permanently delete checkbox, this location record permanently deleted and all of its related resources and data will be permanently deleted.
-
+        Would you like to restore this location record?
     </x-slot>
 
     <x-slot name="footer">

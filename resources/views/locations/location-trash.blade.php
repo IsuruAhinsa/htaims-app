@@ -15,18 +15,6 @@
         <ul class="mt-5 flex space-x-2 lg:mt-0 lg:ml-4">
 
             <li>
-                <x-action-button wire:click.prevent="create()">
-
-                    <x-svg-icon class="-ml-1 -mr-1 sm:mr-2 text-gray-500">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                    </x-svg-icon>
-
-                    <span class="hidden sm:block">{{ __('Create') }}</span>
-
-                </x-action-button>
-            </li>
-
-            <li>
 
                 <a href="{{ route('locations.index') }}">
 
