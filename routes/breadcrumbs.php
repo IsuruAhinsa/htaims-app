@@ -16,3 +16,13 @@ Breadcrumbs::for('locations.trash', function (BreadcrumbTrail $trail) {
     $trail->parent('locations.index');
     $trail->push('Deleted Locations', route('locations.trash'));
 });
+
+Breadcrumbs::for('manufacturers.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Manufacturers', route('manufacturers.index'));
+});
+
+Breadcrumbs::for('manufacturers.trash', function (BreadcrumbTrail $trail) {
+    $trail->parent('manufacturers.index');
+    $trail->push('Deleted Manufacturers', route('manufacturers.trash'));
+});

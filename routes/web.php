@@ -3,6 +3,8 @@
 use App\Http\Controllers\SettingController;
 use App\Http\Livewire\Locations\LocationIndex;
 use App\Http\Livewire\Locations\LocationTrash;
+use App\Http\Livewire\Manufacturers\ManufacturerIndex;
+use App\Http\Livewire\Manufacturers\ManufacturerTrash;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,5 +36,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::get('locations/trash', LocationTrash::class)
         ->name('locations.trash');
+
+    Route::get('manufacturers', ManufacturerIndex::class)
+        ->name('manufacturers.index');
+
+    Route::get('manufacturers/trash', ManufacturerTrash::class)
+        ->name('manufacturers.trash');
 
 });
