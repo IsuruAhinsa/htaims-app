@@ -1,3 +1,21 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+@layer components {
+    .row {
+        @apply flex flex-wrap mx-px;
+    }
+}
+
+@layer utilities {
+    @variants responsive {
+        .flex-half {
+            flex: 0 0 50%;
+        }
+
+        .max-w-half {
+            max-width: 50%;
+        }
+    }
+}
