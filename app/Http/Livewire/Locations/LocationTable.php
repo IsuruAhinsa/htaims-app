@@ -3,16 +3,16 @@
 namespace App\Http\Livewire\Locations;
 
 use App\Models\Location;
+use App\Traits\PowergridActionButton;
 use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\Column;
 use PowerComponents\LivewirePowerGrid\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridEloquent;
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
-use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 
 class LocationTable extends PowerGridComponent
 {
-    use ActionButton;
+    use PowergridActionButton;
 
     public string $sortDirection = 'desc';
 

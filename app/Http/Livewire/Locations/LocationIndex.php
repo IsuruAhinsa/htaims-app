@@ -104,8 +104,6 @@ class LocationIndex extends Component
 
             $location->forceDelete();
 
-            $this->forceDelete = false;
-
         } else {
 
             $location->delete();
@@ -120,6 +118,12 @@ class LocationIndex extends Component
             'Location Deleted.',
             $this->forceDelete === true ? 'The Location was deleted successfully!' : 'The Location moved into deleted location!'
         );
+
+        if ($this->forceDelete === true) {
+
+            $this->forceDelete = false;
+
+        }
     }
 
     private function resetInputFields()

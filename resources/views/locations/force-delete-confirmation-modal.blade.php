@@ -13,7 +13,7 @@
             Nevermind
         </x-jet-secondary-button>
 
-        <x-jet-danger-button wire:click="delete({{ $confirmingForceDeletion }})" class="ml-2" wire:loading.attr="disabled">
+        <x-jet-danger-button wire:click="forceDelete({{ $confirmingForceDeletion }})" class="ml-2" wire:loading.attr="disabled">
             Delete Location
         </x-jet-danger-button>
     </x-slot>
