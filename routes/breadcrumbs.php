@@ -26,3 +26,13 @@ Breadcrumbs::for('manufacturers.trash', function (BreadcrumbTrail $trail) {
     $trail->parent('manufacturers.index');
     $trail->push('Deleted Manufacturers', route('manufacturers.trash'));
 });
+
+Breadcrumbs::for('tasks.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Tasks', route('tasks.index'));
+});
+
+Breadcrumbs::for('tasks.trash', function (BreadcrumbTrail $trail) {
+    $trail->parent('tasks.index');
+    $trail->push('Deleted Tasks', route('tasks.trash'));
+});
