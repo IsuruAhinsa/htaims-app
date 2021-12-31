@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Traits\UnixTimestampSerializable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -20,6 +22,8 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
     use HasRoles;
+    use UnixTimestampSerializable;
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -27,7 +31,7 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'name', 'email', 'password', 'phone', 'last_login'
+        'profile_photo_path', 'name', 'email', 'password', 'phone', 'last_login', 'last_login_ip'
     ];
 
     /**
@@ -59,4 +63,15 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    /**
+     * Get the URL to the user's profile photo.
+     *
+     * @return string
+     */
+    public function getProfilePhotoUrlAttribute(): string
+    {
+        return $this->profile_photo_path
+            ?? $this->defaultProfilePhotoUrl();
+    }
 }

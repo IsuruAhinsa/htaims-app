@@ -7,6 +7,8 @@ use App\Http\Livewire\Manufacturers\ManufacturerIndex;
 use App\Http\Livewire\Manufacturers\ManufacturerTrash;
 use App\Http\Livewire\Tasks\TaskIndex;
 use App\Http\Livewire\Tasks\TaskTrash;
+use App\Http\Livewire\Users\UserIndex;
+use App\Http\Livewire\Users\UserTrash;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +35,12 @@ Route::middleware(['auth:sanctum'])->group(function () {
         ->name('settings');
 
     // Livewire Routes
+    Route::get('users', UserIndex::class)
+        ->name('users.index');
+
+    Route::get('users/trash', UserTrash::class)
+        ->name('users.trash');
+
     Route::get('locations', LocationIndex::class)
         ->name('locations.index');
 
