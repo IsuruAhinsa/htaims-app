@@ -211,6 +211,7 @@ class TaskIndex extends Component
     private function resetInputFields()
     {
         $this->state = [];
+        $this->checklist = null;
     }
 
     /**
