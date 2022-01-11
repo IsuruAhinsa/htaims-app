@@ -104,6 +104,14 @@ class RolePermissionSeeder extends Seeder
             ],
 
             [
+                'group_name' => 'Setting',
+                'permissions' => [
+                    'settings.view',
+                    'settings.edit',
+                ],
+            ],
+
+            [
                 'group_name' => 'Location',
                 'permissions' => [
                     'locations.create',
