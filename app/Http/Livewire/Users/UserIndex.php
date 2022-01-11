@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Users;
 
 use App\Models\User;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
@@ -14,6 +15,7 @@ class UserIndex extends Component
 {
     use Actions;
     use WithFileUploads;
+    use AuthorizesRequests;
 
     public $state = [];
 
@@ -119,6 +121,8 @@ class UserIndex extends Component
      */
     public function show(User $user)
     {
+        $this->authorize('users.view');
+
         $this->updateMode = false;
 
         $this->isOpenPanel = true;
@@ -132,6 +136,8 @@ class UserIndex extends Component
      */
     public function edit(User $user)
     {
+        $this->authorize('users.edit');
+
         $this->updateMode = true;
 
         $this->state = $user->toArray();
@@ -200,14 +206,14 @@ class UserIndex extends Component
 
         $this->isOpen = false;
 
+        $this->updateMode = false;
+
         $this->emit('eventRefresh');
 
         $this->notification()->success(
             'User Updated.',
             $this->state['name'] . ' was successfully updated.'
         );
-
-        $this->updateMode = false;
     }
 
     /**
@@ -216,6 +222,8 @@ class UserIndex extends Component
      */
     public function confirmDeletion(User $user)
     {
+        $this->authorize('users.delete');
+
         $this->confirmingDeletion = $user->id;
     }
 

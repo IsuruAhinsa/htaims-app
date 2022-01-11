@@ -161,11 +161,15 @@
 
         <div class="bg-purple-100 rounded-3xl my-1">
 
-            <x-sidebar-item :route="route('users.index')" :dataTitle="'Users'" class="hover:bg-transparent dark:text-black dark:hover:bg-purple-100 rounded-3xl">
-                <x-svg-icon>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                </x-svg-icon>
-            </x-sidebar-item>
+            @canany(['users.create','users.view', 'roles.create', 'roles.view'])
+
+                <x-sidebar-item :route="route('users.index')" :dataTitle="'Users'" class="hover:bg-transparent dark:text-black dark:hover:bg-purple-100 rounded-3xl">
+                    <x-svg-icon>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </x-svg-icon>
+                </x-sidebar-item>
+
+            @endcanany
 
             <x-sidebar-item :route="'#'" :dataTitle="'Subscription'" class="hover:bg-transparent dark:text-black dark:hover:bg-purple-100 rounded-3xl">
                 <x-svg-icon>

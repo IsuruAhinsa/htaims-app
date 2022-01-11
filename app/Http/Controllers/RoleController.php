@@ -16,6 +16,8 @@ class RoleController extends Controller
      */
     public function index()
     {
+        $this->authorize('roles.view');
+
         return view('roles.index');
     }
 
@@ -25,6 +27,8 @@ class RoleController extends Controller
      */
     public function create()
     {
+        $this->authorize('roles.create');
+
         $allPermissions = Permission::all();
         $permissionGroups = User::getPermissionGroups();
         return view('roles.create', [
@@ -67,6 +71,8 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
+        $this->authorize('roles.edit');
+
         if ($role->name == 'Super Administrator') {
             return back()
                 ->with('danger', 'Sorry! Can\'t modify super administrator permissions.');
@@ -114,6 +120,8 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
+        $this->authorize('roles.delete');
+
         if ($role->name == 'Super Administrator') {
             return back()
                 ->with('danger', 'Sorry! Can\'t delete super administrator permissions.');
