@@ -66,3 +66,13 @@ Breadcrumbs::for('tasks.trash', function (BreadcrumbTrail $trail) {
     $trail->parent('tasks.index');
     $trail->push('Deleted Tasks', route('tasks.trash'));
 });
+
+Breadcrumbs::for('departments.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Department', route('departments.index'));
+});
+
+Breadcrumbs::for('departments.trash', function (BreadcrumbTrail $trail) {
+    $trail->parent('departments.index');
+    $trail->push('Deleted Department', route('departments.trash'));
+});
