@@ -31,6 +31,8 @@ class UserIndex extends Component
 
     public $forceDelete = false;
 
+    public $updateMode = false;
+
     protected $listeners = [
         'confirmDeletion',
         'edit',
@@ -117,6 +119,8 @@ class UserIndex extends Component
      */
     public function show(User $user)
     {
+        $this->updateMode = false;
+
         $this->isOpenPanel = true;
 
         $this->state = $user;
@@ -128,6 +132,8 @@ class UserIndex extends Component
      */
     public function edit(User $user)
     {
+        $this->updateMode = true;
+
         $this->state = $user->toArray();
 
         $this->user = $user;
@@ -200,6 +206,8 @@ class UserIndex extends Component
             'User Updated.',
             $this->state['name'] . ' was successfully updated.'
         );
+
+        $this->updateMode = false;
     }
 
     /**

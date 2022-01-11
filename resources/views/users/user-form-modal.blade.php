@@ -4,7 +4,7 @@
         <x-svg-icon class="mr-1">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
         </x-svg-icon>
-        {{ isset($state['id']) ? __('Edit User') : __('Add New User') }}
+        {{ $updateMode ? __('Edit User') : __('Add New User') }}
     </x-slot>
 
     <x-slot name="content">
@@ -27,11 +27,11 @@
                             " />
 
                     <!-- Current Profile Photo -->
-                    @isset($state['id'])
+                    @if($updateMode)
                         <div class="mt-2" x-show="! photoPreview">
                             <img src="{{ $this->state['profile_photo_url'] }}" alt="{{ $this->state['name'] }}" class="rounded-full h-20 w-20 object-cover">
                         </div>
-                    @endisset
+                    @endif
 
                 <!-- New Profile Photo Preview -->
                     <div class="mt-2" x-show="photoPreview">
@@ -44,13 +44,13 @@
                         {{ __('Choose a avatar') }}
                     </x-jet-secondary-button>
 
-                    @isset($state['id'])
+                    @if($updateMode)
                         @if ($this->state['profile_photo_path'])
                             <x-jet-secondary-button type="button" class="mt-2" wire:click="deleteProfilePhoto">
                                 {{ __('Remove Photo') }}
                             </x-jet-secondary-button>
                         @endif
-                    @endisset
+                    @endif
 
                     <x-jet-input-error for="photo" class="mt-2" />
                 </div>
@@ -86,7 +86,7 @@
                         multiselect
                     >
                         @foreach(\Spatie\Permission\Models\Role::all() as $role)
-                            <x-select.option @isset($state['id']) {{ $this->user->hasRole($role->name) ? 'selected' : '' }} @endisset label="{{ $role->name }}" value="{{ $role->name }}" />
+                            <x-select.option @if($updateMode) {{ $this->user->hasRole($role->name) ? 'selected' : '' }} @endif label="{{ $role->name }}" value="{{ $role->name }}" />
                         @endforeach
                     </x-select>
                 </div>
@@ -113,8 +113,8 @@
             Nevermind
         </x-jet-secondary-button>
 
-        <x-jet-button wire:click="{{ isset($state['id']) ? 'update()' : 'store()' }}" wire:loading.attr="disabled">
-            {{ isset($state['id']) ? __('Save Changes') : __('Add New User') }}
+        <x-jet-button wire:click="{{ $updateMode ? 'update()' : 'store()' }}" wire:loading.attr="disabled">
+            {{ $updateMode ? __('Save Changes') : __('Add New User') }}
         </x-jet-button>
     </x-slot>
 
