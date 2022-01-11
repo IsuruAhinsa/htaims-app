@@ -4,7 +4,7 @@
         <x-svg-icon class="mr-1">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
         </x-svg-icon>
-        {{ isset($state['id']) ? __('Edit Task') : __('Add Task') }}
+        {{ $updateMode ? __('Edit Task') : __('Add Task') }}
     </x-slot>
 
     <x-slot name="content">
@@ -48,7 +48,7 @@
                 >
 
                 <!-- current attachment -->
-                @isset($state['id'])
+                @if($updateMode)
                     @isset($this->state['checklist_path'])
                         <div x-show="! showIcon" class="flex flex-row items-center space-x-1">
 
@@ -62,7 +62,7 @@
 
                         </div>
                     @endisset
-                @endisset
+                @endif
 
                 <!-- uploaded attachment -->
                 <div x-show="showIcon" class="flex flex-row items-center space-x-1">
@@ -113,8 +113,8 @@
             Nevermind
         </x-jet-secondary-button>
 
-        <x-jet-button wire:click="{{ isset($state['id']) ? 'update()' : 'store()' }}" wire:loading.attr="disabled">
-            {{ isset($state['id']) ? __('Save Changes') : __('Add Task') }}
+        <x-jet-button wire:click="{{ $updateMode ? 'update()' : 'store()' }}" wire:loading.attr="disabled">
+            {{ $updateMode ? __('Save Changes') : __('Add Task') }}
         </x-jet-button>
     </x-slot>
 

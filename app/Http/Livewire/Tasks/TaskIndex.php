@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Tasks;
 
 use App\Models\Task;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
@@ -13,6 +14,7 @@ class TaskIndex extends Component
 {
     use Actions;
     use WithFileUploads;
+    use AuthorizesRequests;
 
     public $state = [];
 
@@ -27,6 +29,8 @@ class TaskIndex extends Component
     public $forceDelete = false;
 
     public $checklist;
+
+    public $updateMode = false;
 
     protected $listeners = [
         'confirmDeletion',
@@ -103,6 +107,10 @@ class TaskIndex extends Component
      */
     public function show(Task $task)
     {
+        $this->authorize('tasks.view');
+
+        $this->updateMode = false;
+
         $this->isOpenPanel = true;
 
         $this->state = $task->toArray();
@@ -114,6 +122,10 @@ class TaskIndex extends Component
      */
     public function edit(Task $task)
     {
+        $this->authorize('tasks.edit');
+
+        $this->updateMode = true;
+
         $this->state = $task->toArray();
 
         $this->task = $task;
@@ -154,6 +166,8 @@ class TaskIndex extends Component
 
         $this->isOpen = false;
 
+        $this->updateMode = false;
+
         $this->emit('eventRefresh');
 
         $this->notification()->success(
@@ -168,6 +182,8 @@ class TaskIndex extends Component
      */
     public function confirmDeletion(Task $task)
     {
+        $this->authorize('tasks.delete');
+
         $this->confirmingDeletion = $task->id;
     }
 
@@ -234,6 +250,8 @@ class TaskIndex extends Component
      */
     public function downloadAttachment(Task $task)
     {
+        $this->authorize('tasks.download');
+
         return Storage::disk('public')->download($task->checklist_path);
     }
 

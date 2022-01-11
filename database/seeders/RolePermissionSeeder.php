@@ -130,6 +130,7 @@ class RolePermissionSeeder extends Seeder
                     'tasks.view',
                     'tasks.edit',
                     'tasks.delete',
+                    'tasks.download',
                 ],
             ],
         ];
