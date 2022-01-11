@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Manufacturers;
 
 use App\Models\Manufacturer;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
@@ -11,6 +12,7 @@ use WireUi\Traits\Actions;
 class ManufacturerIndex extends Component
 {
     use Actions;
+    use AuthorizesRequests;
 
     public $state = [];
 
@@ -23,6 +25,8 @@ class ManufacturerIndex extends Component
     public $confirmingDeletion = false;
 
     public $forceDelete = false;
+
+    public $updateMode = false;
 
     protected $listeners = [
         'confirmDeletion',
@@ -67,6 +71,10 @@ class ManufacturerIndex extends Component
 
     public function show(Manufacturer $manufacturer)
     {
+        $this->authorize('manufacturers.view');
+
+        $this->updateMode = false;
+
         $this->isOpenPanel = true;
 
         $this->state = $manufacturer->toArray();
@@ -74,6 +82,10 @@ class ManufacturerIndex extends Component
 
     public function edit(Manufacturer $manufacturer)
     {
+        $this->authorize('manufacturers.edit');
+
+        $this->updateMode = true;
+
         $this->state = $manufacturer->toArray();
 
         $this->manufacturer = $manufacturer;
@@ -109,6 +121,8 @@ class ManufacturerIndex extends Component
 
         $this->isOpen = false;
 
+        $this->updateMode = false;
+
         $this->emit('eventRefresh');
 
         $this->notification()->success(
@@ -119,6 +133,8 @@ class ManufacturerIndex extends Component
 
     public function confirmDeletion(Manufacturer $manufacturer)
     {
+        $this->authorize('manufacturers.delete');
+
         $this->confirmingDeletion = $manufacturer->id;
     }
 

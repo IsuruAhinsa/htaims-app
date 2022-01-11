@@ -8,7 +8,7 @@
             <path d="M9 5a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1"></path>
             <line x1="3" y1="21" x2="22" y2="21"></line>
         </x-svg-icon>
-        {{ isset($state['id']) ? __('Edit Manufacturer') : __('Add Manufacturer') }}
+        {{ $updateMode ? __('Edit Manufacturer') : __('Add Manufacturer') }}
     </x-slot>
 
     <x-slot name="content">
@@ -91,8 +91,8 @@
             Nevermind
         </x-jet-secondary-button>
 
-        <x-jet-button wire:click="{{ isset($state['id']) ? 'update()' : 'store()' }}" wire:loading.attr="disabled">
-            {{ isset($state['id']) ? __('Save Changes') : __('Add Manufacturer') }}
+        <x-jet-button wire:click="{{ $updateMode ? 'update()' : 'store()' }}" wire:loading.attr="disabled">
+            {{ $updateMode ? __('Save Changes') : __('Add Manufacturer') }}
         </x-jet-button>
     </x-slot>
 
