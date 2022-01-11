@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Locations;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 use App\Models\Location;
 use WireUi\Traits\Actions;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Validator;
 class LocationIndex extends Component
 {
     use Actions;
+    use AuthorizesRequests;
 
     public $state = [];
 
@@ -24,12 +26,17 @@ class LocationIndex extends Component
 
     public $forceDelete = false;
 
+    public $updateMode = false;
+
     protected $listeners = [
         'confirmDeletion',
         'edit',
         'show',
     ];
 
+    /**
+     * Show location create form modal.
+     */
     public function create()
     {
         $this->resetInputFields();
@@ -58,6 +65,10 @@ class LocationIndex extends Component
 
     public function show(Location $location)
     {
+        $this->authorize('locations.show');
+
+        $this->updateMode = false;
+
         $this->isOpenPanel = true;
 
         $this->state = $location->toArray();
@@ -65,6 +76,10 @@ class LocationIndex extends Component
 
     public function edit(Location $location)
     {
+        $this->authorize('locations.edit');
+
+        $this->updateMode = true;
+
         $this->state = $location->toArray();
 
         $this->location = $location;
@@ -85,6 +100,8 @@ class LocationIndex extends Component
 
         $this->isOpen = false;
 
+        $this->updateMode = false;
+
         $this->emit('eventRefresh');
 
         $this->notification()->success(
@@ -95,6 +112,8 @@ class LocationIndex extends Component
 
     public function confirmDeletion(Location $location)
     {
+        $this->authorize('locations.delete');
+
         $this->confirmingDeletion = $location->id;
     }
 
