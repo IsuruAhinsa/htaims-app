@@ -17,6 +17,26 @@ Breadcrumbs::for('users.trash', function (BreadcrumbTrail $trail) {
     $trail->push('Deleted Users', route('users.trash'));
 });
 
+Breadcrumbs::for('roles.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Users', route('users.index'));
+    $trail->push('Role & Permissions', route('roles.index'));
+});
+
+Breadcrumbs::for('roles.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Users', route('users.index'));
+    $trail->push('Role & Permissions', route('roles.index'));
+    $trail->push('Create Role', route('roles.create'));
+});
+
+Breadcrumbs::for('roles.edit', function (BreadcrumbTrail $trail, $role) {
+    $trail->parent('dashboard');
+    $trail->push('Users', route('users.index'));
+    $trail->push('Role & Permissions', route('roles.index'));
+    $trail->push($role->name, route('roles.edit', $role));
+});
+
 Breadcrumbs::for('locations.index', function (BreadcrumbTrail $trail) {
     $trail->parent('dashboard');
     $trail->push('Locations', route('locations.index'));

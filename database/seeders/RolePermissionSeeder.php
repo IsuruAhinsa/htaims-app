@@ -20,9 +20,9 @@ class RolePermissionSeeder extends Seeder
     public function run()
     {
         // Ask for db migration refresh, default is no
-        if ($this->command->confirm('Do you wish to refresh migration before seeding, it will clear all old data?')) {
-            // Call the php artisan migrate:refresh
-            $this->command->call('migrate:refresh');
+        if ($this->command->confirm('Do you wish to fresh migration before seeding, it will clear all old data?')) {
+            // Call the php artisan migrate:fresh
+            $this->command->call('migrate:fresh');
             $this->command->warn("Data cleared, starting from blank database.");
         }
 

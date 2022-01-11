@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SettingController;
 use App\Http\Livewire\Locations\LocationIndex;
 use App\Http\Livewire\Locations\LocationTrash;
@@ -29,6 +30,8 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::view('/dashboard', 'dashboard')->name('dashboard');
+
+    Route::resource('roles', RoleController::class)->except(['show']);
 
     // NOTE: change to invokable method & route
     Route::get('/settings', [SettingController::class, 'show'])
