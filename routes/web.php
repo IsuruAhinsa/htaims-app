@@ -35,7 +35,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     // NOTE: change to invokable method & route
     Route::get('/settings', [SettingController::class, 'show'])
-        ->name('settings');
+        ->name('settings')
+        ->can('settings.view');
 
     // Livewire Routes
     Route::get('users', UserIndex::class)
