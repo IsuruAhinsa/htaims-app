@@ -14,6 +14,8 @@ use App\Http\Livewire\Tasks\TaskIndex;
 use App\Http\Livewire\Tasks\TaskTrash;
 use App\Http\Livewire\Users\UserIndex;
 use App\Http\Livewire\Users\UserTrash;
+use App\Http\Livewire\Vendors\VendorIndex;
+use App\Http\Livewire\Vendors\VendorTrash;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -78,5 +80,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::get('contractors/trash', ContractorTrash::class)
         ->name('contractors.trash');
+
+    Route::get('vendors', VendorIndex::class)
+        ->name('vendors.index');
+
+    Route::get('vendors/trash', VendorTrash::class)
+        ->name('vendors.trash');
 
 });

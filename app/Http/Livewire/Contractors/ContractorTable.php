@@ -18,6 +18,8 @@ class ContractorTable extends PowerGridComponent
 {
     use PowergridActionButton;
 
+    public string $sortDirection = 'desc';
+
     /*
     |--------------------------------------------------------------------------
     |  Features Setup

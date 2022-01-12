@@ -26,9 +26,11 @@ class ManufacturerTable extends PowerGridComponent
     */
     public function setUp(): void
     {
-        $this->showPerPage()
-            ->showSearchInput()
-            ->showExportOption('download', ['excel', 'csv']);
+        $this->showRecordCount('full')
+            ->showToggleColumns()
+            ->showPerPage()
+            ->showExportOption('download', ['excel', 'csv'])
+            ->showSearchInput();
     }
 
     /*
@@ -50,16 +52,6 @@ class ManufacturerTable extends PowerGridComponent
     | Configure here relationships to be used by the Search and Table Filters.
     |
     */
-
-    /**
-     * Relationship search.
-     *
-     * @return array<string, array<int, string>>
-     */
-    public function relationSearch(): array
-    {
-        return [];
-    }
 
     /*
     |--------------------------------------------------------------------------
@@ -85,10 +77,10 @@ class ManufacturerTable extends PowerGridComponent
             ->addColumn('fax')
             ->addColumn('email')
             ->addColumn('created_at_formatted', function(Manufacturer $model) {
-                return Carbon::parse($model->created_at)->format('d/m/Y H:i:s');
+                return $model->getFormattedDateObject($model->created_at, 'datetime', false);
             })
             ->addColumn('updated_at_formatted', function(Manufacturer $model) {
-                return Carbon::parse($model->updated_at)->format('d/m/Y H:i:s');
+                return $model->getFormattedDateObject($model->updated_at, 'datetime', false);
             });
     }
 

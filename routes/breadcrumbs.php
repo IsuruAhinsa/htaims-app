@@ -86,3 +86,13 @@ Breadcrumbs::for('contractors.trash', function (BreadcrumbTrail $trail) {
     $trail->parent('contractors.index');
     $trail->push('Deleted Contractors', route('contractors.trash'));
 });
+
+Breadcrumbs::for('vendors.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Vendors', route('vendors.index'));
+});
+
+Breadcrumbs::for('vendors.trash', function (BreadcrumbTrail $trail) {
+    $trail->parent('vendors.index');
+    $trail->push('Deleted Vendors', route('vendors.trash'));
+});

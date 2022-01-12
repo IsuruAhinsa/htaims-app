@@ -1,22 +1,18 @@
 <?php
 
-namespace App\Http\Livewire\Contractors;
+namespace App\Http\Livewire\Vendors;
 
-use App\Models\Contractor;
-use App\Traits\PowergridTrashActionButton;
-use Illuminate\Support\Carbon;
-use Illuminate\Database\QueryException;
+use App\Models\Vendor;
+use App\Traits\PowergridActionButton;
 use Illuminate\Database\Eloquent\Builder;
-use PowerComponents\LivewirePowerGrid\Button;
 use PowerComponents\LivewirePowerGrid\Column;
 use PowerComponents\LivewirePowerGrid\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridEloquent;
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
-use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 
-class ContractorTrashTable extends PowerGridComponent
+class VendorTable extends PowerGridComponent
 {
-    use PowergridTrashActionButton;
+    use PowergridActionButton;
 
     public string $sortDirection = 'desc';
 
@@ -32,6 +28,7 @@ class ContractorTrashTable extends PowerGridComponent
         $this->showRecordCount('full')
             ->showToggleColumns()
             ->showPerPage()
+            ->showExportOption('download', ['excel', 'csv'])
             ->showSearchInput();
     }
 
@@ -44,7 +41,7 @@ class ContractorTrashTable extends PowerGridComponent
     */
     public function datasource(): ?Builder
     {
-        return Contractor::query()->onlyTrashed();
+        return Vendor::query();
     }
 
     /*
@@ -59,17 +56,21 @@ class ContractorTrashTable extends PowerGridComponent
     {
         return PowerGrid::eloquent()
             ->addColumn('id')
-            ->addColumn('reference_code')
-            ->addColumn('contractor_no')
+            ->addColumn('code')
             ->addColumn('name')
-            ->addColumn('start_date')
-            ->addColumn('end_date')
-            ->addColumn('type')
-            ->addColumn('value')
-            ->addColumn('created_at_formatted', function(Contractor $model) {
+            ->addColumn('contact_person')
+            ->addColumn('address')
+            ->addColumn('city')
+            ->addColumn('state')
+            ->addColumn('zip')
+            ->addColumn('country')
+            ->addColumn('phone')
+            ->addColumn('fax')
+            ->addColumn('email')
+            ->addColumn('created_at_formatted', function(Vendor $model) {
                 return $model->getFormattedDateObject($model->created_at, 'datetime', false);
             })
-            ->addColumn('updated_at_formatted', function(Contractor $model) {
+            ->addColumn('updated_at_formatted', function(Vendor $model) {
                 return $model->getFormattedDateObject($model->updated_at, 'datetime', false);
             });
     }
@@ -94,19 +95,12 @@ class ContractorTrashTable extends PowerGridComponent
             Column::add()
                 ->title('ID')
                 ->field('id')
-                ->makeInputRange()
-                ->hidden(),
+                ->hidden()
+                ->makeInputRange(),
 
             Column::add()
-                ->title('REFERENCE CODE')
-                ->field('reference_code')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
-
-            Column::add()
-                ->title('CONTRACTOR NO')
-                ->field('contractor_no')
+                ->title('CODE')
+                ->field('code')
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
@@ -119,31 +113,67 @@ class ContractorTrashTable extends PowerGridComponent
                 ->makeInputText(),
 
             Column::add()
-                ->title('START DATE')
-                ->field('start_date')
-                ->searchable()
-                ->sortable()
-                ->makeInputDatePicker('start_date'),
-
-            Column::add()
-                ->title('END DATE')
-                ->field('end_date')
-                ->searchable()
-                ->sortable()
-                ->makeInputDatePicker('end_date'),
-
-            Column::add()
-                ->title('TYPE')
-                ->field('type')
+                ->title('CONTACT PERSON')
+                ->field('contact_person')
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
 
             Column::add()
-                ->title('VALUE')
-                ->field('value')
+                ->title('ADDRESS')
+                ->field('address')
                 ->sortable()
-                ->searchable(),
+                ->searchable()
+                ->makeInputText(),
+
+            Column::add()
+                ->title('CITY')
+                ->field('city')
+                ->sortable()
+                ->searchable()
+                ->makeInputText(),
+
+            Column::add()
+                ->title('STATE')
+                ->field('state')
+                ->sortable()
+                ->searchable()
+                ->makeInputText(),
+
+            Column::add()
+                ->title('ZIP')
+                ->field('zip')
+                ->sortable()
+                ->searchable()
+                ->makeInputText(),
+
+            Column::add()
+                ->title('COUNTRY')
+                ->field('country')
+                ->sortable()
+                ->searchable()
+                ->makeInputText(),
+
+            Column::add()
+                ->title('PHONE')
+                ->field('phone')
+                ->sortable()
+                ->searchable()
+                ->makeInputText(),
+
+            Column::add()
+                ->title('FAX')
+                ->field('fax')
+                ->sortable()
+                ->searchable()
+                ->makeInputText(),
+
+            Column::add()
+                ->title('EMAIL')
+                ->field('email')
+                ->sortable()
+                ->searchable()
+                ->makeInputText(),
 
             Column::add()
                 ->title('CREATED AT')
