@@ -69,10 +69,20 @@ Breadcrumbs::for('tasks.trash', function (BreadcrumbTrail $trail) {
 
 Breadcrumbs::for('departments.index', function (BreadcrumbTrail $trail) {
     $trail->parent('dashboard');
-    $trail->push('Department', route('departments.index'));
+    $trail->push('Departments', route('departments.index'));
 });
 
 Breadcrumbs::for('departments.trash', function (BreadcrumbTrail $trail) {
     $trail->parent('departments.index');
-    $trail->push('Deleted Department', route('departments.trash'));
+    $trail->push('Deleted Departments', route('departments.trash'));
+});
+
+Breadcrumbs::for('contractors.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Contractors', route('contractors.index'));
+});
+
+Breadcrumbs::for('contractors.trash', function (BreadcrumbTrail $trail) {
+    $trail->parent('contractors.index');
+    $trail->push('Deleted Contractors', route('contractors.trash'));
 });

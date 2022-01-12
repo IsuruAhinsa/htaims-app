@@ -1,18 +1,22 @@
 <?php
 
-namespace App\Http\Livewire\Locations;
+namespace App\Http\Livewire\Contractors;
 
-use App\Models\Location;
-use App\Traits\PowergridActionButton;
+use App\Models\Contractor;
+use App\Traits\PowergridTrashActionButton;
+use Illuminate\Support\Carbon;
+use Illuminate\Database\QueryException;
 use Illuminate\Database\Eloquent\Builder;
+use PowerComponents\LivewirePowerGrid\Button;
 use PowerComponents\LivewirePowerGrid\Column;
 use PowerComponents\LivewirePowerGrid\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridEloquent;
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
+use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 
-class LocationTable extends PowerGridComponent
+class ContractorTrashTable extends PowerGridComponent
 {
-    use PowergridActionButton;
+    use PowergridTrashActionButton;
 
     public string $sortDirection = 'desc';
 
@@ -23,12 +27,11 @@ class LocationTable extends PowerGridComponent
     | Setup Table's general features
     |
     */
-    public function setUp()
+    public function setUp(): void
     {
         $this->showRecordCount('full')
             ->showToggleColumns()
             ->showPerPage()
-            ->showExportOption('download', ['excel', 'csv'])
             ->showSearchInput();
     }
 
@@ -41,7 +44,7 @@ class LocationTable extends PowerGridComponent
     */
     public function datasource(): ?Builder
     {
-        return Location::query();
+        return Contractor::query()->onlyTrashed();
     }
 
     /*
@@ -55,12 +58,18 @@ class LocationTable extends PowerGridComponent
     public function addColumns(): ?PowerGridEloquent
     {
         return PowerGrid::eloquent()
-            ->addColumn('code')
-            ->addColumn('description')
-            ->addColumn('created_at_formatted', function(Location $model) {
+            ->addColumn('id')
+            ->addColumn('reference_code')
+            ->addColumn('contractor_no')
+            ->addColumn('name')
+            ->addColumn('start_date')
+            ->addColumn('end_date')
+            ->addColumn('type')
+            ->addColumn('value')
+            ->addColumn('created_at_formatted', function(Contractor $model) {
                 return $model->getFormattedDateObject($model->created_at, 'datetime', false);
             })
-            ->addColumn('updated_at_formatted', function(Location $model) {
+            ->addColumn('updated_at_formatted', function(Contractor $model) {
                 return $model->getFormattedDateObject($model->updated_at, 'datetime', false);
             });
     }
@@ -73,39 +82,84 @@ class LocationTable extends PowerGridComponent
     | Each column can be configured with properties, filters, actions...
     |
     */
+
+     /**
+     * PowerGrid Columns.
+     *
+     * @return array<int, Column>
+     */
     public function columns(): array
     {
         return [
             Column::add()
-                ->title(__('CODE'))
-                ->field('code')
+                ->title('ID')
+                ->field('id')
+                ->makeInputRange()
+                ->hidden(),
+
+            Column::add()
+                ->title('REFERENCE CODE')
+                ->field('reference_code')
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
 
             Column::add()
-                ->title(__('DESCRIPTION'))
-                ->field('description')
+                ->title('CONTRACTOR NO')
+                ->field('contractor_no')
                 ->sortable()
-                ->headerAttribute(false, 'width:50%')
                 ->searchable()
                 ->makeInputText(),
 
             Column::add()
-                ->title(__('CREATED AT'))
-                ->field('created_at_formatted')
+                ->title('NAME')
+                ->field('name')
+                ->sortable()
+                ->searchable()
+                ->makeInputText(),
+
+            Column::add()
+                ->title('START DATE')
+                ->field('start_date')
+                ->searchable()
+                ->sortable()
+                ->makeInputDatePicker('start_date'),
+
+            Column::add()
+                ->title('END DATE')
+                ->field('end_date')
+                ->searchable()
+                ->sortable()
+                ->makeInputDatePicker('end_date'),
+
+            Column::add()
+                ->title('TYPE')
+                ->field('type')
+                ->sortable()
+                ->searchable()
+                ->makeInputText(),
+
+            Column::add()
+                ->title('VALUE')
+                ->field('value')
+                ->sortable()
+                ->searchable(),
+
+            Column::add()
+                ->title('CREATED AT')
+                ->field('created_at_formatted', 'created_at')
                 ->searchable()
                 ->sortable()
                 ->makeInputDatePicker('created_at'),
 
             Column::add()
-                ->title(__('UPDATED AT'))
-                ->field('updated_at_formatted')
+                ->title('UPDATED AT')
+                ->field('updated_at_formatted', 'updated_at')
                 ->searchable()
                 ->sortable()
-                ->makeInputDatePicker('updated_at')
-                ->hidden(),
+                ->hidden()
+                ->makeInputDatePicker('updated_at'),
+
         ];
     }
-
 }

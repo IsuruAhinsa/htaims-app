@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SettingController;
+use App\Http\Livewire\Contractors\ContractorIndex;
+use App\Http\Livewire\Contractors\ContractorTrash;
 use App\Http\Livewire\Departments\DepartmentIndex;
 use App\Http\Livewire\Departments\DepartmentTrash;
 use App\Http\Livewire\Locations\LocationIndex;
@@ -70,5 +72,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::get('departments/trash', DepartmentTrash::class)
         ->name('departments.trash');
+
+    Route::get('contractors', ContractorIndex::class)
+        ->name('contractors.index');
+
+    Route::get('contractors/trash', ContractorTrash::class)
+        ->name('contractors.trash');
 
 });
