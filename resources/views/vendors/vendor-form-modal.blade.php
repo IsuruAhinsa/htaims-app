@@ -79,7 +79,7 @@
 
                 <div class="mb-4">
                     <x-jet-label for="email" value="{{ __('Email') }}" />
-                    <x-jet-input id="email" type="text" placeholder="Enter Email" class="mt-1 block w-full" wire:model.defer="state.email"/>
+                    <x-jet-input id="email" type="email" placeholder="Enter Email" class="mt-1 block w-full" wire:model.defer="state.email"/>
                     <x-jet-input-error for="email" class="mt-2" />
                 </div>
             </div>

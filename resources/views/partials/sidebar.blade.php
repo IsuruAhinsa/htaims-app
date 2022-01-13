@@ -40,15 +40,19 @@
             </x-svg-icon>
         </x-sidebar-item>
 
-        <x-sidebar-item :route="'#'" :dataTitle="'Hospitals'">
-            <x-svg-icon stroke-width="2">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <rect x="4" y="4" width="16" height="16" rx="2"></rect>
-                <line x1="9" y1="8" x2="9" y2="16"></line>
-                <line x1="9" y1="12" x2="15" y2="12"></line>
-                <line x1="15" y1="8" x2="15" y2="16"></line>
-            </x-svg-icon>
-        </x-sidebar-item>
+        @canany(['hospitals.create', 'hospitals.view'])
+
+            <x-sidebar-item :route="route('hospitals.index')" :dataTitle="'Hospitals'">
+                <x-svg-icon stroke-width="2">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                    <line x1="9" y1="8" x2="9" y2="16"></line>
+                    <line x1="9" y1="12" x2="15" y2="12"></line>
+                    <line x1="15" y1="8" x2="15" y2="16"></line>
+                </x-svg-icon>
+            </x-sidebar-item>
+
+        @endcanany
 
         @canany(['locations.create', 'locations.view'])
 

@@ -6,6 +6,8 @@ use App\Http\Livewire\Contractors\ContractorIndex;
 use App\Http\Livewire\Contractors\ContractorTrash;
 use App\Http\Livewire\Departments\DepartmentIndex;
 use App\Http\Livewire\Departments\DepartmentTrash;
+use App\Http\Livewire\Hospitals\HospitalIndex;
+use App\Http\Livewire\Hospitals\HospitalTrash;
 use App\Http\Livewire\Locations\LocationIndex;
 use App\Http\Livewire\Locations\LocationTrash;
 use App\Http\Livewire\Manufacturers\ManufacturerIndex;
@@ -86,5 +88,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::get('vendors/trash', VendorTrash::class)
         ->name('vendors.trash');
+
+    Route::get('hospitals', HospitalIndex::class)
+        ->name('hospitals.index');
+
+    Route::get('hospitals/trash', HospitalTrash::class)
+        ->name('hospitals.trash');
 
 });

@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Http\Livewire\Manufacturers;
+namespace App\Http\Livewire\Hospitals;
 
-use App\Models\Manufacturer;
+use App\Models\Hospital;
 use App\Traits\PowergridTrashActionButton;
-use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\Column;
 use PowerComponents\LivewirePowerGrid\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridEloquent;
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
 
-class ManufacturerTrashTable extends PowerGridComponent
+class HospitalTrashTable extends PowerGridComponent
 {
     use PowergridTrashActionButton;
 
@@ -41,25 +40,7 @@ class ManufacturerTrashTable extends PowerGridComponent
     */
     public function datasource(): ?Builder
     {
-        return Manufacturer::query()->onlyTrashed();
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    |  Relationship Search
-    |--------------------------------------------------------------------------
-    | Configure here relationships to be used by the Search and Table Filters.
-    |
-    */
-
-    /**
-     * Relationship search.
-     *
-     * @return array<string, array<int, string>>
-     */
-    public function relationSearch(): array
-    {
-        return [];
+        return Hospital::query()->onlyTrashed();
     }
 
     /*
@@ -75,21 +56,21 @@ class ManufacturerTrashTable extends PowerGridComponent
         return PowerGrid::eloquent()
             ->addColumn('id')
             ->addColumn('code')
+            ->addColumn('hospital_code_prefix')
             ->addColumn('name')
-            ->addColumn('contact_person')
+            ->addColumn('region')
             ->addColumn('address')
-            ->addColumn('city')
-            ->addColumn('state')
-            ->addColumn('zip')
-            ->addColumn('country')
             ->addColumn('phone')
             ->addColumn('fax')
             ->addColumn('email')
-            ->addColumn('created_at_formatted', function(Manufacturer $model) {
-                return Carbon::parse($model->created_at)->format('d/m/Y H:i:s');
+            ->addColumn('wo_prefix')
+            ->addColumn('wocm_slno')
+            ->addColumn('wopm_slno')
+            ->addColumn('created_at_formatted', function(Hospital $model) {
+                return $model->getFormattedDateObject($model->created_at, 'datetime', false);
             })
-            ->addColumn('updated_at_formatted', function(Manufacturer $model) {
-                return Carbon::parse($model->updated_at)->format('d/m/Y H:i:s');
+            ->addColumn('updated_at_formatted', function(Hospital $model) {
+                return $model->getFormattedDateObject($model->updated_at, 'datetime', false);
             });
     }
 
@@ -113,12 +94,19 @@ class ManufacturerTrashTable extends PowerGridComponent
             Column::add()
                 ->title('ID')
                 ->field('id')
-                ->makeInputRange()
-                ->hidden(),
+                ->hidden()
+                ->makeInputRange(),
 
             Column::add()
                 ->title('CODE')
                 ->field('code')
+                ->sortable()
+                ->searchable()
+                ->makeInputText(),
+
+            Column::add()
+                ->title('HOSPITAL CODE PREFIX')
+                ->field('hospital_code_prefix')
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
@@ -131,8 +119,8 @@ class ManufacturerTrashTable extends PowerGridComponent
                 ->makeInputText(),
 
             Column::add()
-                ->title('CONTACT PERSON')
-                ->field('contact_person')
+                ->title('REGION')
+                ->field('region')
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
@@ -140,34 +128,6 @@ class ManufacturerTrashTable extends PowerGridComponent
             Column::add()
                 ->title('ADDRESS')
                 ->field('address')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
-
-            Column::add()
-                ->title('CITY')
-                ->field('city')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
-
-            Column::add()
-                ->title('STATE')
-                ->field('state')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
-
-            Column::add()
-                ->title('ZIP')
-                ->field('zip')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
-
-            Column::add()
-                ->title('COUNTRY')
-                ->field('country')
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
@@ -194,20 +154,42 @@ class ManufacturerTrashTable extends PowerGridComponent
                 ->makeInputText(),
 
             Column::add()
+                ->title('WO PREFIX')
+                ->field('wo_prefix')
+                ->sortable()
+                ->searchable()
+                ->makeInputText(),
+
+            Column::add()
+                ->title('WOCM SLNO')
+                ->field('wocm_slno')
+                ->sortable()
+                ->searchable()
+                ->makeInputText(),
+
+            Column::add()
+                ->title('WOPM SLNO')
+                ->field('wopm_slno')
+                ->sortable()
+                ->searchable()
+                ->makeInputText(),
+
+            Column::add()
                 ->title('CREATED AT')
                 ->field('created_at_formatted', 'created_at')
                 ->searchable()
                 ->sortable()
-                ->makeInputDatePicker('created_at')
-                ->hidden(),
+                ->hidden()
+                ->makeInputDatePicker('created_at'),
 
             Column::add()
                 ->title('UPDATED AT')
                 ->field('updated_at_formatted', 'updated_at')
                 ->searchable()
                 ->sortable()
-                ->makeInputDatePicker('updated_at')
-                ->hidden(),
+                ->hidden()
+                ->makeInputDatePicker('updated_at'),
+
         ];
     }
 }
