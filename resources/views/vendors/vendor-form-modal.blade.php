@@ -48,9 +48,9 @@
             </div>
             <div class="relative w-full px-2 sm:max-w-half sm:flex-half">
                 <div class="mb-4">
-                    <x-jet-label for="contact_person" value="{{ __('State / Province') }}" />
-                    <x-jet-input id="contact_person" type="text" placeholder="Enter State / Province" class="mt-1 block w-full" wire:model.defer="state.state"/>
-                    <x-jet-input-error for="contact_person" class="mt-2" />
+                    <x-jet-label for="state" value="{{ __('State / Province') }}" />
+                    <x-jet-input id="state" type="text" placeholder="Enter State / Province" class="mt-1 block w-full" wire:model.defer="state.state"/>
+                    <x-jet-input-error for="state" class="mt-2" />
                 </div>
 
                 <div class="mb-4">

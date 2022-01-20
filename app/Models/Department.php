@@ -23,4 +23,12 @@ class Department extends Model
         'code',
         'description',
     ];
+
+    /**
+     * Get the assets for the department.
+     */
+    public function assets()
+    {
+        return $this->hasMany(Asset::class);
+    }
 }

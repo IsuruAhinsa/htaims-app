@@ -32,4 +32,12 @@ class Manufacturer extends Model
         'fax',
         'email',
     ];
+
+    /**
+     * Get the assets for the manufacturer.
+     */
+    public function assets()
+    {
+        return $this->hasMany(Asset::class);
+    }
 }

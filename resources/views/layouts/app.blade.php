@@ -41,6 +41,8 @@
 
         <x-notifications z-index="z-50" />
 
+        <x-dialog z-index="z-50" blur="md" align="center" />
+
         <x-jet-banner />
 
         @livewire('partials.sidebar')

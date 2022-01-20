@@ -68,4 +68,12 @@ class Contractor extends Model
     {
         return self::getFormattedDateObject($value, 'date', false);
     }
+
+    /**
+     * Get the assets for the contractor.
+     */
+    public function assets()
+    {
+        return $this->hasMany(Asset::class);
+    }
 }

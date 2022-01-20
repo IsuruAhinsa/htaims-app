@@ -107,3 +107,23 @@ Breadcrumbs::for('hospitals.trash', function (BreadcrumbTrail $trail) {
     $trail->push('Deleted Hospitals', route('hospitals.trash'));
 });
 
+Breadcrumbs::for('assets.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Assets', route('assets.index'));
+});
+
+Breadcrumbs::for('assets.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('assets.index');
+    $trail->push('Create Asset', route('assets.create'));
+});
+
+Breadcrumbs::for('assets.show', function (BreadcrumbTrail $trail, $asset) {
+    $trail->parent('assets.index');
+    $trail->push($asset->asset_no, route('assets.show', $asset));
+});
+
+Breadcrumbs::for('assets.trash', function (BreadcrumbTrail $trail) {
+    $trail->parent('assets.index');
+    $trail->push('Deleted Assets', route('assets.trash'));
+});
+

@@ -23,4 +23,12 @@ class Location extends Model
         'code',
         'description',
     ];
+
+    /**
+     * Get the assets for the location.
+     */
+    public function assets()
+    {
+        return $this->hasMany(Asset::class);
+    }
 }

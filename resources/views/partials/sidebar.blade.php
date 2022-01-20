@@ -17,12 +17,15 @@
             </x-svg-icon>
         </x-sidebar-item>
 
+        @canany(['assets.create', 'assets.view'])
 
-        <x-sidebar-item :route="'#'" :dataTitle="'Assets'">
-            <x-svg-icon>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-            </x-svg-icon>
-        </x-sidebar-item>
+            <x-sidebar-item :route="route('assets.index')" :dataTitle="'Assets'">
+                <x-svg-icon>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                </x-svg-icon>
+            </x-sidebar-item>
+
+        @endcanany
 
         @canany(['tasks.create', 'tasks.view', 'tasks.download'])
 
@@ -230,7 +233,7 @@
     <div class="mt-auto h-16 flex items-center w-full">
         <!-- Action Section -->
         <button
-            class="h-16 mx-auto flex flex justify-center items-center
+            class="h-16 mx-auto flex justify-center items-center
 				w-full focus:text-orange-500 hover:bg-red-200 focus:outline-none">
             <x-svg-icon stroke-width="2" class="text-red-700">
                 <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>

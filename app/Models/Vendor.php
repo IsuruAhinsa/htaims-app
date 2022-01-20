@@ -32,4 +32,12 @@ class Vendor extends Model
         'fax',
         'email',
     ];
+
+    /**
+     * Get the assets for the vendor.
+     */
+    public function assets()
+    {
+        return $this->hasMany(Asset::class);
+    }
 }

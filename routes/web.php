@@ -2,6 +2,10 @@
 
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SettingController;
+use App\Http\Livewire\Assets\AssetForm;
+use App\Http\Livewire\Assets\AssetIndex;
+use App\Http\Livewire\Assets\AssetTrash;
+use App\Http\Livewire\Assets\ShowAsset;
 use App\Http\Livewire\Contractors\ContractorIndex;
 use App\Http\Livewire\Contractors\ContractorTrash;
 use App\Http\Livewire\Departments\DepartmentIndex;
@@ -95,4 +99,15 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('hospitals/trash', HospitalTrash::class)
         ->name('hospitals.trash');
 
+    Route::get('assets', AssetIndex::class)
+        ->name('assets.index');
+
+    Route::get('assets/create', AssetForm::class)
+        ->name('assets.create');
+
+    Route::get('assets/trash', AssetTrash::class)
+        ->name('assets.trash');
+
+    Route::get('assets/{asset}', ShowAsset::class)
+        ->name('assets.show');
 });

@@ -33,4 +33,12 @@ class Hospital extends Model
         'wopm_slno',
         'hospital_code_prefix',
     ];
+
+    /**
+     * Get the assets for the hospital.
+     */
+    public function assets()
+    {
+        return $this->hasMany(Asset::class,);
+    }
 }

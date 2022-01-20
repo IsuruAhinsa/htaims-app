@@ -25,7 +25,7 @@
 
             <div>
                 <x-jet-label for="service_life" value="{{ __('Service Life') }}" />
-                <x-input-group-trail type="text" id="service_life" trail="Year(s)" placeholder="Enter Service Life" class="mt-1 block" wire:model.defer="state.service_life"/>
+                <x-input-group type="text" id="service_life" trail="Year(s)" placeholder="Enter Service Life" class="mt-1 block" wire:model.defer="state.service_life"/>
                 <x-jet-input-error for="state.service_life" class="mt-2" />
             </div>
 
