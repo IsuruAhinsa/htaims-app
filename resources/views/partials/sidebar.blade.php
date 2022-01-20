@@ -174,7 +174,7 @@
                 </x-svg-icon>
             </x-sidebar-item>
 
-            <x-sidebar-item :route="'#'" :dataTitle="'Bucket'" class="hover:bg-transparent dark:text-black dark:hover:bg-yellow-100 rounded-3xl">
+            <x-sidebar-item :route="'#'" :dataTitle="'Inventory'" class="hover:bg-transparent dark:text-black dark:hover:bg-yellow-100 rounded-3xl">
                 <x-svg-icon stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
                 </x-svg-icon>
