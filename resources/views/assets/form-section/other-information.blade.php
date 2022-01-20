@@ -5,10 +5,10 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
         </x-svg-icon>
         <div>
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
+            <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white">
                 Other Assets Information.
             </h3>
-            <p class="mt-1 max-w-2xl text-sm text-gray-500">
+            <p class="mt-1 max-w-2xl text-sm text-gray-500 dark:text-dark-typography">
                 Other relevant information of the asset. Electrical Name, Mechanical Name etc...
             </p>
         </div>

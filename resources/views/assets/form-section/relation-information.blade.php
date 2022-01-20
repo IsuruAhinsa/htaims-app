@@ -6,10 +6,10 @@
                 d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
         </x-svg-icon>
         <div>
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
+            <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white">
                 Asset Relation Information.
             </h3>
-            <p class="mt-1 max-w-2xl text-sm text-gray-500">
+            <p class="mt-1 max-w-2xl text-sm text-gray-500 dark:text-dark-typography">
                 There are asset relation information Location, Vendor, Contractor etc...
             </p>
         </div>

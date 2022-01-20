@@ -5,10 +5,10 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
         </x-svg-icon>
         <div>
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
+            <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white">
                 Warranty & Payments Information.
             </h3>
-            <p class="mt-1 max-w-2xl text-sm text-gray-500">
+            <p class="mt-1 max-w-2xl text-sm text-gray-500 dark:text-dark-typography">
                 Warranty details and payment details of the asset.
             </p>
         </div>
